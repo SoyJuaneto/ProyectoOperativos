@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package proyectosistemasoperativos;
 
 import java.awt.BasicStroke;
@@ -18,15 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author carlo
- */
 public class frmMain extends javax.swing.JFrame {
-
-    /**
-     * Creates new form frmMain
-     */
 
     //Objeto reloj
     Reloj hora_sistema = new Reloj();
