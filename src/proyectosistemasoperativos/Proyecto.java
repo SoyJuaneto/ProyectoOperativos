@@ -1,8 +1,8 @@
 package proyectosistemasoperativos;
 
-public class ProyectoSistemasOperativos {
+public class Proyecto {
     public static void main(String[] args) {
-        frmMain lg = new frmMain();
+        main lg = new main();
         lg.setVisible(true);
     }
     
