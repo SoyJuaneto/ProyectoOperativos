@@ -199,11 +199,11 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(231, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel1.setText("FLMC");
+        jLabel1.setFont(new java.awt.Font("Lexend", 1, 36)); // NOI18N
+        jLabel1.setText("SistemasOperativos");
 
         btnIniciar.setBackground(new java.awt.Color(7, 35, 39));
-        btnIniciar.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        btnIniciar.setFont(new java.awt.Font("Lexend", 1, 36)); // NOI18N
         btnIniciar.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciar.setText("Iniciar");
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -212,11 +212,11 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lexend", 1, 36)); // NOI18N
         jLabel2.setText("Procesos");
 
         btnAdd.setBackground(new java.awt.Color(7, 35, 39));
-        btnAdd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnAdd.setFont(new java.awt.Font("Lexend", 1, 14)); // NOI18N
         btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Agregar Proceso");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -225,14 +225,14 @@ public class frmMain extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Lexend", 1, 14)); // NOI18N
         jLabel5.setText("Tiempo Inicio");
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel6.setText("Tiempo Consumo");
+        jLabel6.setFont(new java.awt.Font("Lexend", 1, 14)); // NOI18N
+        jLabel6.setText("Rafaga");
 
         btnLimpiar.setBackground(new java.awt.Color(7, 35, 39));
-        btnLimpiar.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        btnLimpiar.setFont(new java.awt.Font("Lexend", 1, 14)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         btnLimpiar.setText("Limpiar celdas");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -242,13 +242,13 @@ public class frmMain extends javax.swing.JFrame {
         });
 
         TablaP.setBackground(new java.awt.Color(80, 188, 185));
-        TablaP.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        TablaP.setFont(new java.awt.Font("Lexend", 0, 14)); // NOI18N
         TablaP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Proceso", "T.Inicio", "T.Consumo"
+                "Proceso", "Inicio", "Rafaga"
             }
         ) {
             Class[] types = new Class [] {
