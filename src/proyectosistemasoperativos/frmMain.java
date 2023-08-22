@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.Random;
 
 public class frmMain extends JFrame {
 
@@ -15,9 +16,10 @@ public class frmMain extends JFrame {
     Reloj hora_sistema = new Reloj();
     Hilo hilo = new Hilo();
     Grafica grafica = new Grafica();
+    Random random = new Random();
     int contador = 0;
     int contadorCPU = 10;
-    int Quantum = 3;
+    int Quantum = random.nextInt(5)+1;
     int faltante = 0;
     int tProceso = 0;
     int procesoActual;
