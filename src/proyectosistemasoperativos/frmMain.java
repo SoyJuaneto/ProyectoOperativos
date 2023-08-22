@@ -91,7 +91,6 @@ public class frmMain extends javax.swing.JFrame {
         for (int i = 0; i < filasF; i++) {
             modeloF.removeRow(0);
         }
-        jContadorActual.setText(null);
         jProcesoActual.setText("Proceso Actual");
         paint(jPGrafica.getGraphics());
         contadorCPU = 10;
@@ -126,9 +125,6 @@ public class frmMain extends javax.swing.JFrame {
         Object tiempoActual = TablaF.getValueAt(i, 3);
         String stringTiempoActual = tiempoActual.toString();
         int intTiempoActual = Integer.parseInt(stringTiempoActual);
-        int sumaActual = contadorTiempoLimite - intTiempoActual;
-        String hexaSumaActual = Integer.toHexString(sumaActual);
-        jContadorActual.setText(hexaSumaActual + "h");
         
         Object tRes = TablaF.getValueAt(i, 3);
         String stringTRes = tRes.toString();
@@ -165,7 +161,6 @@ public class frmMain extends javax.swing.JFrame {
         jProcesoActual = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jActual = new javax.swing.JPanel();
-        jContadorActual = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -352,25 +347,18 @@ public class frmMain extends javax.swing.JFrame {
 
         jActual.setBackground(new java.awt.Color(7, 35, 39));
 
-        jContadorActual.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jContadorActual.setForeground(new java.awt.Color(255, 255, 255));
-        jContadorActual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jContadorActual.setText("Actual");
-
         javax.swing.GroupLayout jActualLayout = new javax.swing.GroupLayout(jActual);
         jActual.setLayout(jActualLayout);
         jActualLayout.setHorizontalGroup(
             jActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jActualLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jContadorActual, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jActualLayout.setVerticalGroup(
             jActualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jActualLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jContadorActual, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -979,7 +967,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JPanel jActual;
-    private javax.swing.JLabel jContadorActual;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
