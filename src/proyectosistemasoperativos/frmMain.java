@@ -159,7 +159,6 @@ public class frmMain extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jProcesoActual = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jActual = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -172,8 +171,6 @@ public class frmMain extends javax.swing.JFrame {
         Labelhora = new javax.swing.JLabel();
         lblhorasistema = new javax.swing.JLabel();
         jPGrafica = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -216,7 +213,7 @@ public class frmMain extends javax.swing.JFrame {
         btnLimpiar.setBackground(new java.awt.Color(7, 35, 39));
         btnLimpiar.setFont(new java.awt.Font("Lexend", 1, 14)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
-        btnLimpiar.setText("Limpiar celdas");
+        btnLimpiar.setText("Reiniciar");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLimpiarActionPerformed(evt);
@@ -314,13 +311,13 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(51, 133, 139));
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel4.setText("CPU");
+        jLabel4.setFont(new java.awt.Font("Lexend", 1, 24)); // NOI18N
+        jLabel4.setText("Proceso Actual");
 
         jPanel4.setBackground(new java.awt.Color(7, 35, 39));
 
         jProcesoActual.setBackground(new java.awt.Color(7, 35, 39));
-        jProcesoActual.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jProcesoActual.setFont(new java.awt.Font("Lexend", 1, 18)); // NOI18N
         jProcesoActual.setForeground(new java.awt.Color(255, 255, 255));
         jProcesoActual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jProcesoActual.setText("Proceso Actual");
@@ -341,9 +338,6 @@ public class frmMain extends javax.swing.JFrame {
                 .addComponent(jProcesoActual, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel9.setText("Planificador");
 
         jActual.setBackground(new java.awt.Color(7, 35, 39));
 
@@ -423,20 +417,20 @@ public class frmMain extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(TablaF);
 
-        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Lexend", 1, 18)); // NOI18N
         jLabel11.setText("Cantidad de Procesos:");
 
         jtTerminados.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Lexend", 1, 18)); // NOI18N
         jLabel12.setText("Tiempo de Procesos:");
 
         jtTiempoProcesos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        Labelhora.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        Labelhora.setFont(new java.awt.Font("Lexend", 1, 18)); // NOI18N
         Labelhora.setText("Hora del sistema:");
 
-        lblhorasistema.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblhorasistema.setFont(new java.awt.Font("Lexend", 1, 18)); // NOI18N
         lblhorasistema.setText("------------------------------");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -449,7 +443,6 @@ public class frmMain extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(25, 25, 25)))
@@ -501,7 +494,6 @@ public class frmMain extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
@@ -548,12 +540,6 @@ public class frmMain extends javax.swing.JFrame {
             .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel13.setText("0x00h");
-
-        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel14.setText("0x3ch");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -561,9 +547,7 @@ public class frmMain extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel14))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -581,9 +565,7 @@ public class frmMain extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel13))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPGrafica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -970,14 +952,12 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
+
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPGrafica;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
