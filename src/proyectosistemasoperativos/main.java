@@ -1,16 +1,13 @@
 package proyectosistemasoperativos;
 
 import java.awt.*;
-import java.io.IOException;
-import static java.lang.Integer.parseInt;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.Random;
-
-public class frmMain extends JFrame {
+public class main extends JFrame {
 
     //Objeto reloj
     Reloj hora_sistema = new Reloj();
@@ -32,7 +29,7 @@ public class frmMain extends JFrame {
     int nuevoContador = 0;
     //int contadorF = 0;
 
-    public frmMain() {
+    public main() {
         initComponents();
         limpiar();
         //inicio del hilo_reloj
@@ -633,20 +630,20 @@ public class frmMain extends JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmMain().setVisible(true);
+                new main().setVisible(true);
             }
         });
     }
@@ -821,7 +818,7 @@ public class frmMain extends JFrame {
         try {
             Thread.sleep(1000); //Dormir sistema 1 segundo
         } catch (InterruptedException ex) {
-            Logger.getLogger(frmMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -830,7 +827,7 @@ public class frmMain extends JFrame {
             Thread.sleep(1000); //Dormir sistema 1 segundo
             tiempoTerminado++; // tiempo terminado ++
         } catch (InterruptedException ex) {
-            Logger.getLogger(frmMain.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -864,7 +861,7 @@ public class frmMain extends JFrame {
                 try {
                     Thread.sleep(1);
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(frmMain.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(main.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
