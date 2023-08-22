@@ -306,7 +306,7 @@ public class frmMain extends javax.swing.JFrame {
                 .addGap(89, 89, 89))
         );
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lexend", 1, 21)); // NOI18N
         jLabel3.setText("Memoria Principal");
 
         jPanel3.setBackground(new java.awt.Color(51, 133, 139));
