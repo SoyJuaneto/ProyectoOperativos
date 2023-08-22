@@ -92,7 +92,6 @@ public class frmMain extends javax.swing.JFrame {
             modeloF.removeRow(0);
         }
         jContadorActual.setText(null);
-        jLimiteActual.setText(null);
         jProcesoActual.setText("Proceso Actual");
         paint(jPGrafica.getGraphics());
         contadorCPU = 10;
@@ -123,9 +122,6 @@ public class frmMain extends javax.swing.JFrame {
             int intTiempoLimite = Integer.parseInt(stringTiempoLimite);
             contadorTiempoLimite = contadorTiempoLimite + intTiempoLimite;
         }
-
-        String HexaTiempoLimite = Integer.toHexString(contadorTiempoLimite);
-        jLimiteActual.setText(HexaTiempoLimite + "h");
 
         Object tiempoActual = TablaF.getValueAt(i, 3);
         String stringTiempoActual = tiempoActual.toString();
@@ -172,8 +168,6 @@ public class frmMain extends javax.swing.JFrame {
         jContadorActual = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        jLimiteActual = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaF = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
@@ -399,31 +393,20 @@ public class frmMain extends javax.swing.JFrame {
 
         jPanel7.setBackground(new java.awt.Color(7, 35, 39));
 
-        jLimiteActual.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLimiteActual.setForeground(new java.awt.Color(255, 255, 255));
-        jLimiteActual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLimiteActual.setText("Límite");
-
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLimiteActual, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLimiteActual, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(7, 35, 39));
-        jLabel10.setText("Límite:");
 
         TablaF.setBackground(new java.awt.Color(80, 188, 185));
         TablaF.setModel(new javax.swing.table.DefaultTableModel(
@@ -503,8 +486,7 @@ public class frmMain extends javax.swing.JFrame {
                         .addComponent(jScrollPane2))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(87, 87, 87)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -550,7 +532,6 @@ public class frmMain extends javax.swing.JFrame {
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
                         .addGap(31, 31, 31)))
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1000,7 +981,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JPanel jActual;
     private javax.swing.JLabel jContadorActual;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -1011,7 +991,6 @@ public class frmMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLimiteActual;
     private javax.swing.JPanel jPGrafica;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
