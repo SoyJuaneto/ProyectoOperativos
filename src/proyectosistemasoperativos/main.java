@@ -15,19 +15,15 @@ public class main extends JFrame {
     Grafica grafica = new Grafica();
     Random random = new Random();
     int contador = 0;
-    int contadorCPU = 10;
+    int tamMemoria = 10;
     int Quantum = random.nextInt(5)+1;
     int faltante = 0;
     int tProceso = 0;
     int procesoActual;
     int cantidadProcesos = 0;
     int tiempoTerminado = 1;
-    String proceso = "P";
-    int TamMemoria = 50;
+    int memoriaMax = 60;
     boolean esReal = false;
-    int contadorProcesos = 0;
-    int nuevoContador = 0;
-    //int contadorF = 0;
 
     public main() {
         initComponents();
@@ -44,30 +40,21 @@ public class main extends JFrame {
 
     void agregar() {
         DefaultTableModel modelo = (DefaultTableModel) TablaP.getModel();
-
         DefaultTableModel modeloF = (DefaultTableModel) TablaF.getModel();
 
-        if (txtInicio.getText().isEmpty() || txtTiempo.getText().isEmpty() ) {
-            JOptionPane.showMessageDialog(null, "Hacen falta datos.");
+        int inicio = random.nextInt(10)+1;
+        int rafaga = random.nextInt(15)+1;
+
+
+        if (tamMemoria + rafaga <= memoriaMax) {
+            contador++;
+            String idProceso = "P"+contador;
+            modelo.addRow(new Object[]{idProceso, inicio, rafaga});
+            grafica.GraficarP(jPGrafica.getGraphics(), 1, rafaga, 225, rafaga);
+            tamMemoria = rafaga + tamMemoria;
+            modeloF.addRow(new Object[]{idProceso, "--", Quantum, rafaga, "--", "--", "--"});
         } else {
-            int ObtTiempo = Integer.parseInt(txtTiempo.getText());
-            if (contadorCPU + ObtTiempo <= TamMemoria) {
-                contador++;
-                String idProceso = proceso + contador;
-                int textoInicio = Integer.parseInt(txtInicio.getText());
-                int textoTiempo = Integer.parseInt(txtTiempo.getText());
-                //int textoQuantum = Integer
-                modelo.addRow(new Object[]{idProceso, textoInicio, textoTiempo});
-                txtInicio.setText(null);
-                txtTiempo.setText(null);
-                grafica.GraficarP(jPGrafica.getGraphics(), 1, textoTiempo, 225, textoTiempo);
-                contadorCPU = ObtTiempo + contadorCPU;
-
-                modeloF.addRow(new Object[]{idProceso, "--", Quantum, ObtTiempo, "--", "--", "--"});
-
-            } else {
-                JOptionPane.showMessageDialog(null, "Tamaño de memoria insuficiente.\n El espacio restante es: " + (TamMemoria - contadorCPU));
-            }
+            //JOptionPane.showMessageDialog(null, "Tamaño de memoria insuficiente."+tamMemoria +"\n El espacio restante es: " + (memoriaMax - tamMemoria));
         }
     }
 
@@ -77,8 +64,6 @@ public class main extends JFrame {
         for (int i = 0; i < filas; i++) {
             modelo.removeRow(0);
         }
-        txtInicio.setText(null);
-        txtTiempo.setText(null);
 
         DefaultTableModel modeloF = (DefaultTableModel) TablaF.getModel();
         int filasF = modeloF.getRowCount();
@@ -87,7 +72,7 @@ public class main extends JFrame {
         }
         jProcesoActual.setText("...");
         paint(jPGrafica.getGraphics());
-        contadorCPU = 10;
+        tamMemoria = 10;
         TablaF.setVisible(false);
         jtTerminados.setText(null);
         jtTerminados.setVisible(false);
@@ -134,10 +119,6 @@ public class main extends JFrame {
         btnIniciar = new JButton();
         jLabel2 = new JLabel();
         btnAdd = new JButton();
-        txtInicio = new JTextField();
-        txtTiempo = new JTextField();
-        jLabel5 = new JLabel();
-        jLabel6 = new JLabel();
         btnLimpiar = new JButton();
         jScrollPane1 = new JScrollPane();
         TablaP = new JTable();
@@ -192,14 +173,6 @@ public class main extends JFrame {
                 btnAddActionPerformed(evt);
             }
         });
-
-        jLabel5.setFont(new Font("Lexend", 1, 14));
-        jLabel5.setForeground(new Color(153, 146, 178));
-        jLabel5.setText("Tiempo Inicio");
-
-        jLabel6.setFont(new Font("Lexend", 1, 14));
-        jLabel6.setForeground(new Color(153, 146, 178));
-        jLabel6.setText("Rafaga");
 
         btnLimpiar.setBackground(new Color(68, 60, 104));
         btnLimpiar.setFont(new Font("Lexend", 1, 14));
@@ -256,14 +229,10 @@ public class main extends JFrame {
                         .addGap(61, 61, 61)
                         .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel6))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(btnIniciar, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 291, GroupLayout.PREFERRED_SIZE)
                             .addGroup(GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtInicio, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtTiempo, GroupLayout.PREFERRED_SIZE, 107, GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(btnLimpiar, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 291, GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnAdd, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 291, GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -281,13 +250,9 @@ public class main extends JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtInicio, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTiempo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.BASELINE))
                 .addGap(37, 37, 37)
                 .addComponent(btnAdd, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -586,7 +551,6 @@ public class main extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
         agregar();
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -807,7 +771,7 @@ public class main extends JFrame {
         int enteroTiempoFaltante = Integer.parseInt(stringTiempoFaltante);
         faltante = enteroTiempoFaltante;
         if (faltante > 0) {
-            jProcesoActual.setText(String.valueOf(proceso + procesoActual));
+            jProcesoActual.setText(String.valueOf("P" + procesoActual));
         } else {
             jProcesoActual.setText("Finalizado");
             // agregar la opción de quitarle el espacio a la memoriaCPU
@@ -873,13 +837,13 @@ public class main extends JFrame {
         public void GraficarP(Graphics g, int x, int y, int ancho, int altura) {
             Stroke grosor = new BasicStroke(3.0f);
             Graphics2D graficar = (Graphics2D) g;
-            String idProceso1 = proceso + contador;
+            String idProceso1 = "P" + contador;
             g.setColor(Color.BLACK);
             g.setFont(new Font("Serif", Font.BOLD, 11));
-            g.drawString(idProceso1, 110, 600 - ((10 * contadorCPU) + ((altura / 2) * 10)));
+            g.drawString(idProceso1, 110, 600 - ((10 * tamMemoria) + ((altura / 2) * 10)));
             graficar.setStroke(grosor);
             graficar.setColor(Color.BLACK);
-            graficar.drawRect(3, 600 - ((10 * contadorCPU) + (altura * 10)), 220, altura * 10);
+            graficar.drawRect(3, 600 - ((10 * tamMemoria) + (altura * 10)), 220, altura * 10);
 
 
         }
@@ -951,8 +915,6 @@ public class main extends JFrame {
     private JLabel jLabel2;
     private JLabel jLabel3;
     private JLabel jLabel4;
-    private JLabel jLabel5;
-    private JLabel jLabel6;
     private JPanel jPGrafica;
     private JPanel jPanel1;
     private JPanel jPanel2;
@@ -966,7 +928,5 @@ public class main extends JFrame {
     private JTextField jtTerminados;
     private JTextField jtTiempoProcesos;
     private JLabel lblhorasistema;
-    private JTextField txtInicio;
-    private JTextField txtTiempo;
   
 }
