@@ -42,8 +42,6 @@ public class main extends JFrame {
         int inicio = random.nextInt(10)+1;
         int rafaga = random.nextInt(50)+1;
 
-        System.out.println(hilo.isAlive());
-
         if (10+rafaga <= memoriaMax) {
             contador++;
             String idProceso = "P"+contador;
@@ -534,13 +532,43 @@ public class main extends JFrame {
         hilo.stop();
     }
 
-    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        // TODO add your handling code here:
+    private void cambioTabla(){
+        //DefaultTableModel modeloF = (DefaultTableModel) TablaF.getModel();
+
+        int c = TablaP.getRowCount();
+        System.out.println(c);
+
+        Object tiemposI = TablaP.getValueAt(1,2);
+
+        int pActual=0;
+
+        for(int i=0; i<=c;i++){
+            if (TablaP.getSelectedRow()==pActual){
+                Object tiempoA = TablaP.getValueAt(i,2);
+                int intTiempoA = Integer.parseInt(tiempoA.toString());
+                Object tiempoS = TablaP.getValueAt(i+1,2);
+                int intTiempoS = Integer.parseInt(tiempoS.toString());
+                if (intTiempoA>intTiempoS){
+
+                }
+            }
+        }
+
+        //TablaP.getValueAt(a,2);
+        //Object rafaga = TablaF.getValueAt(i,3);
+        //int intRafaga = Integer.parseInt(rafaga.toString());
+
+        //modeloF.addRow(new Object[]{idProceso, "--", Quantum, rafaga, "--", "--", "--"});
+
+
+    }
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {
         TablaF.setVisible(true);
         jtTerminados.setVisible(true);
         jtTiempoProcesos.setVisible(true);
         btnLimpiar.setVisible(true);
         btnIniciar.setVisible(false);
+        //cambioTabla();
         paintActivador(jPGrafica.getGraphics());
         hilo = new Hilo();
         hilo.start();
