@@ -8,14 +8,12 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.Random;
 public class main extends JFrame {
-
     //Objeto reloj
     Reloj hora_sistema = new Reloj();
     Hilo hilo = new Hilo();
     Grafica grafica = new Grafica();
     Random random = new Random();
     int contador = 0;
-    int tamMemoria = 10;
     int Quantum = random.nextInt(5)+1;
     int faltante = 0;
     int tProceso = 0;
@@ -35,7 +33,6 @@ public class main extends JFrame {
         jtTerminados.setVisible(false);
         jtTiempoProcesos.setVisible(false);
         //paint(jPGrafica.getGraphics());
-
     }
 
     void agregar() {
@@ -43,19 +40,25 @@ public class main extends JFrame {
         DefaultTableModel modeloF = (DefaultTableModel) TablaF.getModel();
 
         int inicio = random.nextInt(10)+1;
-        int rafaga = random.nextInt(15)+1;
+        int rafaga = random.nextInt(50)+1;
 
+        System.out.println(hilo.isAlive());
 
-        if (tamMemoria + rafaga <= memoriaMax) {
+        if (10+rafaga <= memoriaMax) {
             contador++;
             String idProceso = "P"+contador;
-            modelo.addRow(new Object[]{idProceso, inicio, rafaga});
-            grafica.GraficarP(jPGrafica.getGraphics(), 1, rafaga, 225, rafaga);
-            tamMemoria = rafaga + tamMemoria;
-            modeloF.addRow(new Object[]{idProceso, "--", Quantum, rafaga, "--", "--", "--"});
-        } else {
-            //JOptionPane.showMessageDialog(null, "Tamaño de memoria insuficiente."+tamMemoria +"\n El espacio restante es: " + (memoriaMax - tamMemoria));
+
+            if (hilo.isAlive()==true){
+                modelo.addRow(new Object[]{idProceso, tiempoTerminado+1, rafaga});
+                modeloF.addRow(new Object[]{idProceso, "--", Quantum, rafaga, "--", "--", "--"});
+                hilo.stop();
+                hilo.start();
+            }else {
+                modelo.addRow(new Object[]{idProceso, inicio, rafaga});
+                modeloF.addRow(new Object[]{idProceso, "--", Quantum, rafaga, "--", "--", "--"});
+            }
         }
+
     }
 
     void limpiar() {
@@ -72,7 +75,6 @@ public class main extends JFrame {
         }
         jProcesoActual.setText("...");
         paint(jPGrafica.getGraphics());
-        tamMemoria = 10;
         TablaF.setVisible(false);
         jtTerminados.setText(null);
         jtTerminados.setVisible(false);
@@ -80,35 +82,7 @@ public class main extends JFrame {
         jtTiempoProcesos.setVisible(false);
         cantidadProcesos = 0;
         tiempoTerminado = 1;
-        /**/
-    }
-
-    void revisarBase(int i) {
-
-        int contadorTiempoBase = 10;
-        for (int c = 0; c < i; c++) {
-            Object tiempoBase = TablaP.getValueAt(c, 2);
-            String stringTiempoBase = tiempoBase.toString();
-            int intTiempoBase = Integer.parseInt(stringTiempoBase);
-            contadorTiempoBase = contadorTiempoBase + intTiempoBase;
-        }
-
-        int contadorTiempoLimite = 10;
-        for (int c = 0; c <= i; c++) {
-            Object tiempoLimite = TablaP.getValueAt(c, 2);
-            String stringTiempoLimite = tiempoLimite.toString();
-            int intTiempoLimite = Integer.parseInt(stringTiempoLimite);
-            contadorTiempoLimite = contadorTiempoLimite + intTiempoLimite;
-        }
-
-        Object tiempoActual = TablaF.getValueAt(i, 3);
-        String stringTiempoActual = tiempoActual.toString();
-        int intTiempoActual = Integer.parseInt(stringTiempoActual);
-
-        Object tRes = TablaF.getValueAt(i, 3);
-        String stringTRes = tRes.toString();
-        int intTRes = Integer.parseInt(stringTRes);
-        grafica.pintar(jPGrafica.getGraphics(), contadorTiempoBase, contadorTiempoLimite, intTiempoActual);
+        btnIniciar.setVisible(true);
     }
 
     private void initComponents() {
@@ -552,59 +526,32 @@ public class main extends JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         agregar();
-    }//GEN-LAST:event_btnAddActionPerformed
+    }
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiar();
         contador = 0;
         hilo.stop();
-    }//GEN-LAST:event_btnLimpiarActionPerformed
+    }
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         // TODO add your handling code here:
         TablaF.setVisible(true);
         jtTerminados.setVisible(true);
         jtTiempoProcesos.setVisible(true);
-        btnLimpiar.setVisible(false);
+        btnLimpiar.setVisible(true);
         btnIniciar.setVisible(false);
         paintActivador(jPGrafica.getGraphics());
         hilo = new Hilo();
         hilo.start();
-    }//GEN-LAST:event_btnIniciarActionPerformed
+    }
 
     private void TablaFComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_TablaFComponentShown
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_TablaFComponentShown
+    }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new main().setVisible(true);
@@ -633,7 +580,7 @@ public class main extends JFrame {
                                 paintActivador(jPGrafica.getGraphics());
                                 // Gr.paint(jPGrafica.getGraphics(), 1, tProceso, 225, faltante );
                                 TablaF.setValueAt("Procesando", i, 1);
-                                revisarBase(i);
+                                simulacion(i);
                                 Dormir();
                                 faltante--;
                                 //contadorM ++;
@@ -645,6 +592,7 @@ public class main extends JFrame {
                                 // agregar la hora del sistema del inicio y final
                             }
                             TablaF.setValueAt("Espera", i, 1);
+                            paint(jPGrafica.getGraphics());
                             ActivadorActivo(jPGrafica.getGraphics());//pintar verde
                             Activador();//activador
                             if (faltante == 0) {
@@ -656,10 +604,9 @@ public class main extends JFrame {
                         } else {
                             if (faltante > 0 && Quantum != 0) { // Ejecutando proceso cuando tiempo restante sea menor que el quantum
                                 while (faltante > 0) {
-                                    // Gr.paint(jPGrafica.getGraphics(), 1, tProceso, 225, faltante );
                                     paintActivador(jPGrafica.getGraphics());
                                     TablaF.setValueAt("Procesando", i, 1);
-                                    revisarBase(i);
+                                    simulacion(i);
                                     Dormir();
                                     faltante--;
                                     //contadorM ++;
@@ -670,6 +617,7 @@ public class main extends JFrame {
                                     jtTiempoProcesos.setText(String.valueOf((tiempoTerminado - 1) + " Segundos"));
                                 }
                                 TablaF.setValueAt("Espera", i, 1);
+                                paint(jPGrafica.getGraphics());
                                 ActivadorActivo(jPGrafica.getGraphics());//pintar verde
                                 Activador();//activador
                                 //paintActivador(jPGrafica.getGraphics());
@@ -705,6 +653,13 @@ public class main extends JFrame {
                 }
             }
         }
+    }
+
+    private void simulacion(int i) {
+        Object rafaga = TablaF.getValueAt(i,3);
+        int intRafaga = Integer.parseInt(rafaga.toString());
+        paint(jPGrafica.getGraphics());
+        grafica.GraficarP(jPGrafica.getGraphics(), i,intRafaga);
     }
 
     public void HoraInicio(int i) {
@@ -834,41 +789,24 @@ public class main extends JFrame {
     // Clase para graficar
     public class Grafica {
 
-        public void GraficarP(Graphics g, int x, int y, int ancho, int altura) {
+        public void GraficarP(Graphics g, int row,int altura) {
             Stroke grosor = new BasicStroke(3.0f);
             Graphics2D graficar = (Graphics2D) g;
-            String idProceso1 = "P" + contador;
+            Object proceso = TablaF.getValueAt(row,0);
+            String  idProceso = proceso.toString();
             g.setColor(Color.BLACK);
-            g.setFont(new Font("Serif", Font.BOLD, 11));
-            g.drawString(idProceso1, 110, 600 - ((10 * tamMemoria) + ((altura / 2) * 10)));
+            g.setFont(new Font("Lexed", Font.BOLD, 11));
+            g.drawString(idProceso, 110, 600 - (100 + ((altura / 2) * 10)));
             graficar.setStroke(grosor);
             graficar.setColor(Color.BLACK);
-            graficar.drawRect(3, 600 - ((10 * tamMemoria) + (altura * 10)), 220, altura * 10);
-
+            graficar.drawRect(3, 600 - ((100) + (altura * 10)), 220, altura * 10);
 
         }
-
-       /* public void GraficarP(Graphics g, int altura, int c) {
-            Stroke grosor = new BasicStroke(3.0f);
-            Graphics2D graficar = (Graphics2D) g;
-            String idProceso1 = proceso + c;
-            g.setColor(Color.BLACK);
-            g.setFont(new Font("Serif", Font.BOLD, 11));
-            g.drawString(idProceso1, 110, 600 - ((10 * 10) + ((altura / 2) * 10)));
-            graficar.setStroke(grosor);
-            graficar.setColor(Color.BLACK);
-            graficar.drawRect(3, 600 - ((10 * 10) + (altura * 10)), 220, altura * 10);
-
-
-        }*/
         
         public void pintar(Graphics g, int base, int limite, int i){
             Graphics2D graficarP = (Graphics2D) g;
             graficarP.setColor(new Color(153, 146, 178));
-            graficarP.fillRect(3,600- (limite*10), 220, (limite-base-i+1)*10); 
-
-            //graficarP.fillRect(3,600- (limite*10), 220, (limite-base)*10); 
-            //graficarP.fillRect(3,600- ((base*10)+(limite*10)), 220, (limite-base)*10); 
+            graficarP.fillRect(3,600- (limite*10), 220, (limite-base-i+1)*10);
         }
     }
 
@@ -928,5 +866,5 @@ public class main extends JFrame {
     private JTextField jtTerminados;
     private JTextField jtTiempoProcesos;
     private JLabel lblhorasistema;
-  
+
 }
