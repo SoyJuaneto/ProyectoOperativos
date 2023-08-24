@@ -22,6 +22,7 @@ public class main extends JFrame {
     int tiempoTerminado = 1;
     int memoriaMax = 60;
     boolean esReal = false;
+    int sum =10;
 
     public main() {
         initComponents();
@@ -40,9 +41,9 @@ public class main extends JFrame {
         DefaultTableModel modeloF = (DefaultTableModel) TablaF.getModel();
 
         int inicio = random.nextInt(10)+1;
-        int rafaga = random.nextInt(50)+1;
+        int rafaga = random.nextInt(10)+1;
 
-        if (10+rafaga <= memoriaMax) {
+        if (sum+rafaga <= memoriaMax) {
             contador++;
             String idProceso = "P"+contador;
 
@@ -55,6 +56,10 @@ public class main extends JFrame {
                 modelo.addRow(new Object[]{idProceso, inicio, rafaga});
                 modeloF.addRow(new Object[]{idProceso, "--", Quantum, rafaga, "--", "--", "--"});
             }
+
+            sum = sum+rafaga;
+        }else {
+            JOptionPane.showMessageDialog(null,"Memoria Llena");
         }
 
     }
@@ -597,6 +602,9 @@ public class main extends JFrame {
                                 Informar(i);
                                 String horaF = lblhorasistema.getText();
                                 TablaF.setValueAt(horaF, i, 6);
+                                Object r= TablaP.getValueAt(i,2);
+                                int rafaga = Integer.parseInt(r.toString());
+                                sum = sum-rafaga;
                             }
                         } else {
                             if (faltante > 0 && Quantum != 0) { // Ejecutando proceso cuando tiempo restante sea menor que el quantum
@@ -624,6 +632,9 @@ public class main extends JFrame {
                                     Informar(i);
                                     String horaF = lblhorasistema.getText();
                                     TablaF.setValueAt(horaF, i, 6);
+                                    Object r= TablaP.getValueAt(i,2);
+                                    int rafaga = Integer.parseInt(r.toString());
+                                    sum = sum-rafaga;
                                 }
                             } else {
                                 if (faltante == 0 && Quantum != 0) {
@@ -632,6 +643,9 @@ public class main extends JFrame {
                                     Informar(i);
                                     String horaF = lblhorasistema.getText();
                                     TablaF.setValueAt(horaF, i, 6);
+                                    Object r= TablaP.getValueAt(i,2);
+                                    int rafaga = Integer.parseInt(r.toString());
+                                    sum = sum-rafaga;
                                 }
                             }
                         }
@@ -679,17 +693,12 @@ public class main extends JFrame {
                 TablaF.setValueAt("Listo", c, 1);
                 String horaI = lblhorasistema.getText();
                 TablaF.setValueAt(horaI, c, 5);
-                //contadorProcesos = contadorProcesos + intTardado;
-                //nuevoContador++;
-              //  grafica.GraficarP(jPGrafica.getGraphics(), contadorProcesos,nuevoContador);
             } else if (tProceso == 0 && esReal == false) {
                 TablaF.setValueAt("Listo", c, 1);
                 String horaI = lblhorasistema.getText();
                 TablaF.setValueAt(horaI, c, 5);
                 esReal = true;
-                /*contadorProcesos = contadorProcesos + intTardado;
-                nuevoContador++;
-                grafica.GraficarP(jPGrafica.getGraphics(), contadorProcesos,nuevoContador);*/
+
             }            
         }
     }
